@@ -16,7 +16,8 @@ jobs:
     - name: build
       run: |
         gem install --no-document rubocop -v 0.70.0
-        gem install --no-document rubocop-rspec rubocop-performance rubocop-rspec rubocop-git
+        gem install --no-document rubocop-performance -v 1.3.0
+        gem install --no-document rubocop-rspec rubocop-git
     - name: cop
       run: |
         rubocop-git origin/${{ github.base_ref }}...origin/${{ github.head_ref }}
