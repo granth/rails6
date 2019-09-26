@@ -15,9 +15,8 @@ jobs:
         ruby-version: 2.6.x
     - name: build
       run: |
-        sudo apt-get install -y libmysqlclient-dev
         gem install bundler
-        bundle install --jobs 4 --retry 3
+        bundle install --with rubocop --jobs 4 --retry 3
     - name: cop
       run: |
-        bin/rubocop
+        bundle exec rubocop
