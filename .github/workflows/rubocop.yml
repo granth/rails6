@@ -16,7 +16,7 @@ jobs:
     - name: build
       run: |
         gem install bundler
-        bundle install --with rubocop --jobs 4 --retry 3
+        bundle install --with rubocop --without development test --jobs 4 --retry 3
     - name: cop
       run: |
         bundle exec rubocop
