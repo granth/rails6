@@ -26,5 +26,6 @@ jobs:
         DATABASE_URL: mysql2://root:password@127.0.0.1:3306/test
       run: |
         gem install bundler
+        sudo apt-get install -y libmysqlclient-dev
         bundle install --jobs 4 --retry 3
         bin/rails test
