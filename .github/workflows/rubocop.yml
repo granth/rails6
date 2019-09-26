@@ -15,7 +15,7 @@ jobs:
         ruby-version: 2.6.x
     - name: build
       run: |
-        gem install rubocop rubocop-rspec rubocop-performance rubocop-rspec
+        gem install --no-document rubocop rubocop-rspec rubocop-performance rubocop-rspec rubocop-git
     - name: cop
       run: |
         rubocop-git origin/${{ github.base_ref }}...origin/${{ github.head_ref }}
