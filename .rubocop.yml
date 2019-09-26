@@ -1,0 +1,48 @@
+require: rubocop-rspec
+
+inherit_from:
+  - https://raw.githubusercontent.com/4ormat/styleguide/master/.rubocop.yml
+
+AllCops:
+  TargetRailsVersion: 6.0
+  TargetRubyVersion: 2.6
+
+Rails:
+  Enabled: true
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - 'describe'
+    - 'context'
+    - 'concern'
+    - 'concerning'
+    - 'FactoryBot.define'
+    - 'class_methods'
+    - 'included'
+    - 'state_machine'
+
+Rails/FilePath:
+  Enabled: false
+
+Layout/ClassStructure:
+  Enabled: true
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+# doesn't work with inferred type from path, only explicit `type: :system`
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/{request,feature,system,routing,views}/*.rb'
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/FilePath:
+  IgnoreMethods: true
