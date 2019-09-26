@@ -10,8 +10,6 @@ jobs:
     services:
       mysql:
         image: mysql:5.7
-        ports:
-          - 3306
         env:
           MYSQL_ROOT_PASSWORD: password
 
@@ -26,7 +24,7 @@ jobs:
         DATABASE_URL: mysql2://root:password@127.0.0.1:3306/test
       run: |
         sudo apt-get install -y mysql-client
-        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -ppassword -e "SHOW DATABASES"
+        mysql --host 127.0.0.1 -uroot -ppassword -e "SHOW DATABASES"
         gem install bundler
         sudo apt-get install -y libmysqlclient-dev
         bundle install --jobs 4 --retry 3
