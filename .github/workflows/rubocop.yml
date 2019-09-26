@@ -1,6 +1,6 @@
 name: RuboCop
 
-on: [push]
+on: [pull-request]
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: cop
       run: |
-        bundle exec rubocop
+        bundle exec rubocop-git ${{ github.base_ref }}..${{ github.head_ref }}
