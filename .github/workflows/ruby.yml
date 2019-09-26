@@ -21,11 +21,13 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Build and test
-      env:
-        DATABASE_URL: mysql2://root:password@127.0.0.1:${{ job.services.mysql.ports[3306] }}/test
+    - name: build
       run: |
         gem install bundler
         sudo apt-get install -y libmysqlclient-dev
+    - name: test
+      env:
+        DATABASE_URL: mysql2://root:password@127.0.0.1:${{ job.services.mysql.ports[3306] }}/test
+      run: |
         bundle install --jobs 4 --retry 3
-        bin/rails test
+        bin/rails db:setup test
